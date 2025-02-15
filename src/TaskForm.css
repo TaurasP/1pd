@@ -1,0 +1,5 @@
+.form-control:focus {
+    border-color: #4db15d;
+    border-right-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0);
+}
