@@ -8,7 +8,7 @@ interface CartProps {
 const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart }) => {
   return (
     <div className="cart" style={{ paddingTop: "30px" }}>
-      <h2>Krepšelis</h2>
+      <h2>Prekių krepšelis</h2>
       {cartItems.length === 0 ? (
         <p>Krepšelis tuščias</p>
       ) : (
