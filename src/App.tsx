@@ -1,8 +1,27 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TaskList from './components/TaskList';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+
+const products = [
+  { id: 1, name: 'Prekė 1' },
+  { id: 2, name: 'Prekė 2' },
+  { id: 3, name: 'Prekė 3' },
+];
 
 function App() {
+  const [cartItems, setCartItems] = useState<{ id: number, name: string }[]>([]);
+
+  const addToCart = (product: { id: number, name: string }) => {
+    setCartItems([...cartItems, product]);
+  };
+
+  const removeFromCart = (product: { id: number, name: string }) => {
+    setCartItems(cartItems.filter(item => item.id !== product.id));
+  };
+
   return (
     <Router>
       <div className="container mt-4">
@@ -36,7 +55,12 @@ function App() {
         </header>
         <Routes>
           <Route path="/task1" element={<TaskList />} />
-          <Route path="/task2" element={<h1>Task 2</h1>} />
+          <Route path="/task2" element={
+            <div>
+              <ProductList products={products} addToCart={addToCart} />
+              <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+            </div>
+          } />
           <Route path="/task3" element={<h1>Task 3</h1>} />
         </Routes>
         <footer className="text-center mt-4">
