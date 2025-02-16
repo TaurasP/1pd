@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import TaskForm from './TaskForm';
-import TaskItem from './TaskItem';
-import { Task } from './Task';
+import React, { useState } from "react";
+import TaskForm from "./TaskForm";
+import TaskItem from "./TaskItem";
+import { Task } from "./Task";
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -12,19 +12,29 @@ const TaskList: React.FC = () => {
   };
 
   const toggleTaskCompletion = (id: number) => {
-    setTasks(tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task));
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   const deleteTask = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   return (
     <div>
+      <h2>Užduotys</h2>
       <TaskForm addTask={addTask} />
       <ul className="list-group mt-3">
-        {tasks.map(task => (
-          <TaskItem key={task.id} task={task} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask} />
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            toggleTaskCompletion={toggleTaskCompletion}
+            deleteTask={deleteTask}
+          />
         ))}
       </ul>
     </div>
