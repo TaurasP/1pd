@@ -4,7 +4,6 @@ import Message from "./Message";
 
 const GuessGame: React.FC = () => {
   const [targetNumber, setTargetNumber] = useState<number>(0);
-  const [userGuess, setUserGuess] = useState<number | null>(null);
   const [attempts, setAttempts] = useState<number>(0);
   const [message, setMessage] = useState<string>("");
   const [gameOver, setGameOver] = useState<boolean>(false);
@@ -14,22 +13,20 @@ const GuessGame: React.FC = () => {
   }, []);
 
   const handleGuess = (guess: number) => {
-    setUserGuess(guess);
-    setAttempts(attempts + 1);
+    setAttempts((prev) => prev + 1);
 
     if (guess > targetNumber) {
-      setMessage("Bandyk mažesnį nei " + guess);
+      setMessage(`Bandyk mažesnį nei ${guess}`);
     } else if (guess < targetNumber) {
-      setMessage("Bandyk didesnį nei " + guess);
+      setMessage(`Bandyk didesnį nei ${guess}`);
     } else {
-      setMessage("Teisingai! Skaičius buvo " + guess);
+      setMessage(`Teisingai! Skaičius buvo ${guess}`);
       setGameOver(true);
     }
   };
 
   const resetGame = () => {
     setTargetNumber(Math.floor(Math.random() * 100) + 1);
-    setUserGuess(null);
     setAttempts(0);
     setMessage("");
     setGameOver(false);
