@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../TaskForm.css";
 
 interface GuessFormProps {
@@ -14,6 +14,25 @@ const GuessForm: React.FC<GuessFormProps> = ({ onGuess, gameOver }) => {
     onGuess(Number(guess));
     setGuess("");
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.key === "Enter" &&
+        !gameOver &&
+        guess.trim() &&
+        Number(guess) >= 1 &&
+        Number(guess) <= 100
+      ) {
+        handleSubmit(e as unknown as React.FormEvent);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [guess, gameOver]);
 
   return (
     <form onSubmit={handleSubmit}>

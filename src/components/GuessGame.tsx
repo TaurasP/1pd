@@ -7,6 +7,7 @@ const GuessGame: React.FC = () => {
   const [attempts, setAttempts] = useState<number>(0);
   const [message, setMessage] = useState<string>("");
   const [gameOver, setGameOver] = useState<boolean>(false);
+  const [guesses, setGuesses] = useState<number[]>([]);
 
   useEffect(() => {
     setTargetNumber(Math.floor(Math.random() * 100) + 1);
@@ -14,6 +15,7 @@ const GuessGame: React.FC = () => {
 
   const handleGuess = (guess: number) => {
     setAttempts((prev) => prev + 1);
+    setGuesses((prev) => [...prev, guess]);
 
     if (guess > targetNumber) {
       setMessage(`Bandyk mažesnį nei ${guess}`);
@@ -30,6 +32,7 @@ const GuessGame: React.FC = () => {
     setAttempts(0);
     setMessage("");
     setGameOver(false);
+    setGuesses([]);
   };
 
   return (
@@ -38,6 +41,7 @@ const GuessGame: React.FC = () => {
       <GuessForm onGuess={handleGuess} gameOver={gameOver} />
       <Message message={message} />
       <p>Bandymų skaičius: {attempts}</p>
+      {guesses.length > 0 && <p>Spėjimai: {guesses.join(", ")}</p>}
       {gameOver && (
         <button className="btn btn-primary" onClick={resetGame}>
           Žaisti iš naujo
