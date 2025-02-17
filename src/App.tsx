@@ -12,13 +12,13 @@ import Cart from "./components/Cart";
 import GuessGame from "./components/GuessGame";
 import "./App.css";
 
-const products = [
-  { id: 1, name: "Prekė 1" },
-  { id: 2, name: "Prekė 2" },
-  { id: 3, name: "Prekė 3" },
-];
-
 function App() {
+  const [products] = useState([
+    { id: 1, name: "Prekė 1" },
+    { id: 2, name: "Prekė 2" },
+    { id: 3, name: "Prekė 3" },
+  ]);
+
   const [cartItems, setCartItems] = useState<{ id: number; name: string }[]>(
     []
   );
