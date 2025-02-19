@@ -20,15 +20,13 @@ function App() {
     { id: 3, name: "Prekė 3" },
   ]);
 
-  const [cartItems, setCartItems] = useState<{ id: number; name: string }[]>(
-    []
-  );
+  const [cartItems, setCartItems] = useState<Product[]>([]);
 
-  const addToCart = (product: { id: number; name: string }) => {
+  const addToCart = (product: Product) => {
     setCartItems([...cartItems, product]);
   };
 
-  const removeFromCart = (product: { id: number; name: string }) => {
+  const removeFromCart = (product: Product) => {
     setCartItems(cartItems.filter((item) => item.id !== product.id));
   };
 
