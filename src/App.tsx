@@ -12,8 +12,13 @@ import Cart from "./components/Cart";
 import GuessGame from "./components/GuessGame";
 import "./App.css";
 
+export interface Product {
+  id: number;
+  name: string;
+}
+
 function App() {
-  const [products] = useState([
+  const [products] = useState<Product[]>([
     { id: 1, name: "Prekė 1" },
     { id: 2, name: "Prekė 2" },
     { id: 3, name: "Prekė 3" },

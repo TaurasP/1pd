@@ -1,8 +1,9 @@
 import React from "react";
+import { Product } from "../interfaces/Product";
 
 interface ProductItemProps {
-  product: { id: number; name: string };
-  addToCart: (product: { id: number; name: string }) => void;
+  product: Product;
+  addToCart: (product: Product) => void;
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, addToCart }) => {
