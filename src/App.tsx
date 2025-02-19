@@ -11,11 +11,7 @@ import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import GuessGame from "./components/GuessGame";
 import "./App.css";
-
-export interface Product {
-  id: number;
-  name: string;
-}
+import { Product } from "./interfaces/Product";
 
 function App() {
   const [products] = useState<Product[]>([
