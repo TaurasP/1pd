@@ -40,8 +40,8 @@ const GuessGame: React.FC = () => {
       <h2>Žaidimas - atspėk skaičių nuo 1 iki 100</h2>
       <GuessForm onGuess={handleGuess} gameOver={gameOver} />
       <Message message={message} />
-      <p>Bandymų skaičius: {attempts}</p>
       {guesses.length > 0 && <p>Spėjimai: {guesses.join(", ")}</p>}
+      <p>Bandymų skaičius: {attempts}</p>
       {gameOver && (
         <button className="btn btn-primary" onClick={resetGame}>
           Žaisti iš naujo

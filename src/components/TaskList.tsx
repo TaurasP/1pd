@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskForm from "./TaskForm";
 import TaskItem from "./TaskItem";
-import { Task } from "./Task";
+import { Task } from "../interfaces/Task";
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
