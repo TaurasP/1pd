@@ -23,7 +23,9 @@ function App() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
   const addToCart = (product: Product) => {
-    setCartItems([...cartItems, product]);
+    if (!cartItems.some((item) => item.id === product.id)) {
+      setCartItems([...cartItems, product]);
+    }
   };
 
   const removeFromCart = (product: Product) => {
@@ -95,7 +97,11 @@ function App() {
             path="/task2"
             element={
               <div>
-                <ProductList products={products} addToCart={addToCart} />
+                <ProductList
+                  products={products}
+                  cartItems={cartItems}
+                  addToCart={addToCart}
+                />
                 <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
               </div>
             }
