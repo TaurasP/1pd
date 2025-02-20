@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import '../TaskForm.css';
+import React, { useState } from "react";
+import "../TaskForm.css";
 
 interface TaskFormProps {
   addTask: (text: string) => void;
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (text.trim()) {
       addTask(text);
-      setText('');
+      setText("");
     }
   };
 
@@ -26,7 +26,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit" className="btn btn-primary" disabled={!text.trim()}>Pridėti užduotį</button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={!text.trim()}
+        >
+          Pridėti užduotį
+        </button>
       </div>
     </form>
   );
