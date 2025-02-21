@@ -14,7 +14,7 @@ const ProductList: React.FC<ProductListProps> = ({
 }) => {
   return (
     <div>
-      <h2>Product List</h2>
+      <h2>Produktų sąrašas</h2>
       <ul className="list-group">
         {products.map((product) => (
           <li
